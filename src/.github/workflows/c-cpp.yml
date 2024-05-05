@@ -1,0 +1,21 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-12
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build libraries
+      run: make
+    - name: Build tests
+      run: make test
+    - name: Run tests
+      run: make runtest
+  

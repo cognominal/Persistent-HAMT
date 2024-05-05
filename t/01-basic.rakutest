@@ -1,0 +1,6 @@
+use Test;
+use Persistent::HAMT;
+
+pass "replace me";
+
+done-testing;

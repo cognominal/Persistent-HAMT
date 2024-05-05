@@ -1,0 +1,25 @@
+{
+  "authors": [
+    "Stéphane Payrard"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+    "LibraryMaker"
+  ],
+  "description": "blah blah blah",
+  "license": "Artistic-2.0",
+  "name": "Persistent::HAMT",
+  "perl": "6.d",
+  "provides": {
+    "Persistent::HAMT": "lib/Persistent/HAMT.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "",
+  "tags": [
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}
