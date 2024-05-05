@@ -6,6 +6,8 @@ Persistent::HAMT - MOARVM based persistent hashes and stacks
 SYNOPSIS
 ========
 
+At this stage this is only a scaffolding.
+
 ```raku
 use Persistent::HAMT;
 my @a is repr('HAMTArray);
@@ -14,6 +16,9 @@ my %a is repr('HAMTHash);
 
 DESCRIPTION
 ===========
+
+This is the user facing future documentation
+
 
 Persistent::HAMT provides 2 representations, one for stacks, one for hashes.
 They exploit persistent properties of HAMTs to share storage for different 
