@@ -2,6 +2,7 @@
 
 We discuss here how to use hamt to implement a tree sitter for raku.
 That is, to adapt hamt to raku (with MoarVM as a backend) GC.
+See [why](#why) we need to do that.
 
 `hamt` denotes the original [implementation](https://github.com/mkirchner/hamt)
 intended to support immutable hashes. It can be trivially adapted support
@@ -27,7 +28,8 @@ implement raku. MoarVM is the preferred raku backend written in C. See below,
 [rakudo](https://github.com/rakudo/rakudo/tree/main/docs)/[nqp](https://github.com/Raku/nqp/tree/main/docs)/[MoarVM](https://github.com/MoarVM/MoarVM/tree/main/docs)
 docs for definitions of the terms used in this initial blurb.
 
-# The doc per se
+
+## Why
 
 [Treesitter](https://en.wikipedia.org/wiki/Tree-sitter_(parser_generator))
 based syntaxic highlighting of raku and its slangs, possibly changing on the
@@ -37,9 +39,13 @@ is now the norm, is a non starter. Instead we will use the existing parser but
 use a shared persistent structure so to be able to restart parsing from any
 point where the user edits code.
 
+## Being pragmatic
+
 The whole point of treesitters is being responsive to provide timely syntactic
 highlighting when editing code, so we must be careful of the impact of the
 implementation.
+
+# The doc per se
 
 So we want to use
 [persistent](https://en.wikipedia.org/wiki/Persistent_data_structure)
@@ -175,3 +181,8 @@ MVM_register_extop. Example of
 
 The initial idead was that hamt-node.c will contain no method except for garbage collecting.
 In fact it will have array indexing for testing.
+
+## hatmt-node repr
+
+It is the working hotse of hamt-array and hamt-hash
+It wraps [struct hamt](src/hamt/internal_types.h)

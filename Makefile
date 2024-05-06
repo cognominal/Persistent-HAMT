@@ -6,16 +6,14 @@ CFGFLAGS := -DWITH_TABLE_CACHE -DWITH_TABLE_CACHE_STATS
 #
 # Project structure
 #
-SRCDIRS = src test include
+SRCDIRS = src src/hamt
 INCDIRS := $(shell find $(SRCDIRS) -type d)
 INCFLAGS := $(addprefix -I,$(INCDIRS))
-SRCS := src/cache.c \
-         src/hamt.c \
-         src/murmur3.c \
-         src/uh.c \
-		 reprs/hamt-hash.c \
-		 reprs/hamt-stack.c \
-		 reprs/hamt-table.c
+SRCS := src/hamt/cache.c \
+        src/hamt/hamt.c \
+        src/hamt/murmur3.c \
+        src/hamt/uh.c \
+		src/reprs/hamt-table.c
 OBJS := $(SRCS:.c=.o)
 
 #
