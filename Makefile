@@ -6,14 +6,14 @@ CFGFLAGS := -DWITH_TABLE_CACHE -DWITH_TABLE_CACHE_STATS
 #
 # Project structure
 #
-SRCDIRS = src src/hamt
-INCDIRS := $(shell find $(SRCDIRS) -type d)
+SRCDIRS = src src/hamt src/reprs
+INCDIRS := $(shell find $(SRCDIRS) -type d) 3rdparty/MoarVM/src
 INCFLAGS := $(addprefix -I,$(INCDIRS))
 SRCS := src/hamt/cache.c \
         src/hamt/hamt.c \
         src/hamt/murmur3.c \
         src/hamt/uh.c \
-		src/reprs/hamt-table.c
+		src/reprs/hamt-node.c
 OBJS := $(SRCS:.c=.o)
 
 #
@@ -110,6 +110,8 @@ $(TESTEXE): $(TESTOBJS)
 #
 prep:
 	@mkdir -p $(DBGTREE) $(RELTREE)
+	@git submodule init
+	@git submodule update
 
 remake: clean all
 
