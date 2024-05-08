@@ -113,6 +113,11 @@ prep:
 	@git submodule init
 	@git submodule update
 
+buildMoarVM:
+	bin/buildMoarVM
+
+	
+
 remake: clean all
 
 clean:
